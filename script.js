@@ -1,5 +1,53 @@
 var player;
 
+function onPlayerStateChange() {
+    console.log("stateChange");
+    let state = player.getPlayerState();
+    let time = player.playerInfo.currentTime;
+    console.log(player.playerInfo.currentTime);
+    updateState(state, time);
+}
+
+function updateState(state, time) {
+    fetch("http://localhost:3000/playerState/1", {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: 1,
+            state: state,
+            time: time
+        })
+    })
+}
+
+setInterval(async () => {
+    let url = "http://localhost:3000/playerState/1";
+    const res = await fetch(url);
+    const getPlayerState = await res.json();
+    let state = getPlayerState.state;
+    let time = getPlayerState.time;
+    console.log("Checked state. State: " + state + " Time: " + time);
+    console.log(state + " == " + player.getPlayerState() + " = " + (state == player.getPlayerState()).toString());
+    if(state == 2) player.pauseVideo();
+    if(state == 1) player.playVideo();
+    /*
+    if(state != player.getPlayerState) {
+        if (state == 1) {
+            player.seekTo(time);
+            player.playVideo();
+        }
+        else if(state == 2) {
+            player.seekTo(time);
+            player.pauseVideo();
+        }
+    }
+    */
+}, 400);
+
+// the following code is mostly stolen
+
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('video-placeholder', {
         width: 600,
@@ -16,37 +64,6 @@ function onYouTubeIframeAPIReady() {
     });
     console.log("onYouTubeIframeAPIReady");
 }
-
-function onPlayerStateChange() {
-    console.log("stateChange");
-    let state = player.getPlayerState();
-    updateState(state);
-}
-
-function updateState(state) {
-    fetch("http://localhost:3000/playerState/1", {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            id: 1,
-            state: state,
-            time: player.playerInfo.currentTime
-        })
-    })
-}
-
-setInterval(async () => {
-    console.log("Checked state at ");
-    let url = "http://localhost:3000/playerState/1";
-    const res = await fetch(url);
-    const getPlayerState = await res.json();
-    let state = getPlayerState.state;
-    let time = getPlayerState.time;
-    if(state != 1) player.pauseVideo();
-    else player.playVideo();
-}, 400);
 
 function initialize(){
 
