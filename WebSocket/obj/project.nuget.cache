@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "Sih+unWHN1id1XcGgK0FXrvX0l3ZN93QRNtnCsJlQ8AzvTNntLgVeDUisEuQDr4uBiVo3QoDOs/D5xWs9R1h9A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Jean\\Desktop\\Websites\\WebSocket\\WebSocket\\WebSocket.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Jean\\.nuget\\packages\\websocketsharp-nonprerelease\\1.0.0\\websocketsharp-nonprerelease.1.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'WebSocketSharp-NonPreRelease 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "WebSocketSharp-NonPreRelease",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
+}
