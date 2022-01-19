@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Sih+unWHN1id1XcGgK0FXrvX0l3ZN93QRNtnCsJlQ8AzvTNntLgVeDUisEuQDr4uBiVo3QoDOs/D5xWs9R1h9A==",
+  "dgSpecHash": "VLI/YFBJn1eqoKW9/xouWyYZfswr+aqi3P1ueMAIHM49tGtnLfallzDqbi+YObREMUaM0Oosgm6ii04QEXrgbA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jean\\Desktop\\Websites\\WebSocket\\WebSocket\\WebSocket.csproj",
+  "projectFilePath": "C:\\Users\\Jean\\Desktop\\github\\watch-together\\WebSocket\\WebSocket.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jean\\.nuget\\packages\\websocketsharp-nonprerelease\\1.0.0\\websocketsharp-nonprerelease.1.0.0.nupkg.sha512"
   ],

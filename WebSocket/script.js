@@ -9,15 +9,13 @@ socket.onopen = function(event) {
 }
 
 socket.onmessage = function(event) {
-    console.log("Received:" + event.Data);
-    /*
-    console.log("event.Data:" + event.Data);
 
-    state = parseInt(String(event.Data).substring(0, 1));
-    time = parseInt(String(event.Data).substring(1, event.Data.length));
+    state = parseInt(String(event.data).substring(0, 1));
+    time = parseFloat(String(event.data).substring(1, event.data.length));
 
-    console.log("state:" + state + " time:" + time);
-    console.log("Received message: " + console.log(event.Data));
+    console.log("-----------------------");    
+    console.log("Received Message: " + event.data);
+    console.log("State: " + state + " Time: " + time);
 
     switch(state) {
         case 0:
@@ -25,7 +23,7 @@ socket.onmessage = function(event) {
             break;
         case 1:
             player.seekTo(time);
-            player.playVideo();
+            //player.playVideo();
             break;
         case 2:
             player.pauseVideo();
@@ -37,10 +35,9 @@ socket.onmessage = function(event) {
             player.pauseVideo();
             break;
         default:
+            player.pauseVideo();
             break;
     }
-    */
-
 }
 
 socket.onclose = function(event) {
@@ -65,7 +62,7 @@ function onYouTubeIframeAPIReady() {
             playlist: 'taJ60kskkns,FG0fTKAqZ5g'
         },
         events: {
-            onReady: initialize,
+            //onReady: initialize,
             onStateChange: onPlayerStateChange
         }
     });
@@ -73,14 +70,14 @@ function onYouTubeIframeAPIReady() {
 }
 
 function onPlayerStateChange() {
-    
+    console.log("-----------------------");
     if(player.getPlayerState() < 0){
-        console.log("stateChange | sending:\"" + String(6) + String(player.playerInfo.currentTime) + "\"" + " state:" + String(6) + " time:\"" + String(player.playerInfo.currentTime) + "\"");
+        console.log("Sending Message: " + String(2) + String(player.playerInfo.currentTime));
         socket.send(String(6) + String(player.playerInfo.currentTime));
     }
     else {
+        console.log("Sending Message: " + String(player.getPlayerState()) + String(player.playerInfo.currentTime));
         socket.send(String(player.getPlayerState()) + String(player.playerInfo.currentTime));
-        console.log("stateChange | sending:\"" + String(6) + String(player.playerInfo.currentTime) + "\"" + " state:" + String(player.getPlayerState()) + " time:\"" + String(player.playerInfo.currentTime) + "\"");
     }
 }
 
@@ -88,7 +85,7 @@ function updateState() {
     
 }
 
-
+/*
 function initialize(){
 
     // Update the controls on load
@@ -124,3 +121,4 @@ function formatTime(time){
 
     return minutes + ":" + seconds;
 }
+*/

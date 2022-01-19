@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jean\\Desktop\\Websites\\WebSocket\\WebSocket\\WebSocket.csproj": {}
+    "C:\\Users\\Jean\\Desktop\\github\\watch-together\\WebSocket\\WebSocket.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jean\\Desktop\\Websites\\WebSocket\\WebSocket\\WebSocket.csproj": {
+    "C:\\Users\\Jean\\Desktop\\github\\watch-together\\WebSocket\\WebSocket.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jean\\Desktop\\Websites\\WebSocket\\WebSocket\\WebSocket.csproj",
+        "projectUniqueName": "C:\\Users\\Jean\\Desktop\\github\\watch-together\\WebSocket\\WebSocket.csproj",
         "projectName": "WebSocket",
-        "projectPath": "C:\\Users\\Jean\\Desktop\\Websites\\WebSocket\\WebSocket\\WebSocket.csproj",
+        "projectPath": "C:\\Users\\Jean\\Desktop\\github\\watch-together\\WebSocket\\WebSocket.csproj",
         "packagesPath": "C:\\Users\\Jean\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jean\\Desktop\\Websites\\WebSocket\\WebSocket\\obj\\",
+        "outputPath": "C:\\Users\\Jean\\Desktop\\github\\watch-together\\WebSocket\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
