@@ -1,6 +1,8 @@
 var state;
 var time;
 
+var ignoreOnStateChange = 0;
+
 var player;
 
 var socket = new WebSocket("ws://127.0.0.1:7890/Service", "protocolOne");
@@ -25,7 +27,7 @@ socket.onmessage = function(event) {
                 player.pauseVideo();
                 break;
             case 1:
-                player.seekTo(time, true);
+                player.seekTo(time + 0.5, true);
                 player.playVideo();
                 break;
             case 2:
@@ -58,13 +60,17 @@ function onYouTubeIframeAPIReady() {
         width: 600,
         height: 400,
         videoId: 'Xa0Q0J5tOP0',
+        autoplay: 1,
         playerVars: {
             color: 'white',
             playlist: 'taJ60kskkns,FG0fTKAqZ5g'
         },
         events: {
-            //onReady: initialize,
+            onReady: initialize,
             onStateChange: onPlayerStateChange
+        },
+        playerVars: { 
+            'autoplay': 1 
         }
     });
     console.log("onYouTubeIframeAPIReady");
@@ -72,19 +78,32 @@ function onYouTubeIframeAPIReady() {
 
 function onPlayerStateChange() {
 
-    console.log("-----------------------");
-    if(player.getPlayerState() < 0){
-        console.log("problematic state");
-        console.log("Sending Message: " + String(2) + String(player.playerInfo.currentTime));
-        socket.send(String(6) + String(player.playerInfo.currentTime));
-    }
-    else if(player.getPlayerState() != 3){
-        console.log("Sending Message: " + String(player.getPlayerState()) + String(player.playerInfo.currentTime));
-        socket.send(String(player.getPlayerState()) + String(player.playerInfo.currentTime));
-    } 
-    else {
+    if(ignoreOnStateChange == 0){
+        console.log("-----------------------");
+        if(player.getPlayerState() < 0){
+            console.log("problematic state");
+            console.log("Sending Message: " + String(2) + String(player.playerInfo.currentTime));
+            socket.send(String(6) + String(player.playerInfo.currentTime));
+        }
+        else if(player.getPlayerState() != 3){
+            console.log("Sending Message: " + String(player.getPlayerState()) + String(player.playerInfo.currentTime));
+            socket.send(String(player.getPlayerState()) + String(player.playerInfo.currentTime));
+        } 
+        else {
 
-    } 
+        }
+    }
+    else {
+        ignoreOnStateChange -= 1;
+    }
+   
+}
+
+function initialize() {
+    ignoreOnStateChange += 1;
+    player.playVideo();
+    ignoreOnStateChange += 1;
+    player.pauseVideo();
 }
 
 /*
